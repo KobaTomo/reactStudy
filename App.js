@@ -7,8 +7,9 @@ export default function App() {
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <View style={styles.inputContainer}>
-          <TextInput style={styles.input}/>
-          <TouchableOpacity style={styles.button}>
+          <TextInput onChangeText={(text)=>console.log('You typed', text)} style={styles.input}/>
+          <TouchableOpacity onPress={()=> console.log('press')} style={styles.button}>
+            <Text>Click me!</Text>
             <Text style={styles.buttonText}>イートする！</Text>
           </TouchableOpacity>
         </View>
