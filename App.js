@@ -1,17 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, TextInput } from 'react-native';
 
 export default function App() {
+  const [text, setText] = useState('')
+  console.log(text)
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <View style={styles.inputContainer}>
-          <TextInput onChangeText={(text)=>console.log('You typed', text)} style={styles.input}/>
+          <TextInput onChangeText={(_text)=>setText(_text)} style={styles.input}/>
           <TouchableOpacity onPress={()=> console.log('press')} style={styles.button}>
-            <Text>Click me!</Text>
             <Text style={styles.buttonText}>イートする！</Text>
           </TouchableOpacity>
+        </View>
+        <View style={styles.content}>
+          <Text style={styles.contentText}>{text}❤️</Text>
         </View>
         <StatusBar style="light" />
       </View>
@@ -52,5 +56,13 @@ const styles = StyleSheet.create({
     color: 'white',
     paddingHorizontal: 10,
     fontSize: 16,
-  }
+  },
+  content :{
+    padding: 20,
+  },
+  contentText: {
+    color: 'white',
+    fontWeight: '900',
+    fontSize: 16,
+  },
 });
