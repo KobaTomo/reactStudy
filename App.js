@@ -2,20 +2,28 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, TextInput } from 'react-native';
 
+function InputUser(props) {
+  const { 
+    setStateOrg
+  } = props
+  return (
+    <View style={styles.inputContainer}>
+      <TextInput onChangeText={(_text)=>setStateOrg(_text)} style={styles.input}/>
+      <TouchableOpacity onPress={()=> console.log('press')} style={styles.button}>
+        <Text style={styles.buttonText}>イートする！</Text>
+      </TouchableOpacity>
+    </View>
+  )
+}
+
 export default function App() {
   const [text, setText] = useState('')
-  console.log(text)
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <View style={styles.inputContainer}>
-          <TextInput onChangeText={(_text)=>setText(_text)} style={styles.input}/>
-          <TouchableOpacity onPress={()=> console.log('press')} style={styles.button}>
-            <Text style={styles.buttonText}>イートする！</Text>
-          </TouchableOpacity>
-        </View>
+        <InputUser setStateOrg={setText}></InputUser>
         <View style={styles.content}>
-          <Text style={styles.contentText}>{text}❤️</Text>
+          <Text style={styles.contentText}>{text}</Text>
         </View>
         <StatusBar style="light" />
       </View>
